@@ -8,4 +8,10 @@ parserOptions:
     - './tsconfig.json'
   ecmaVersion: latest
   sourceType: module
-rules: {}
+plugins:
+  - 'eslint-plugin-tsdoc'
+rules: {
+  '@typescript-eslint/space-before-function-paren': 'off',
+  '@typescript-eslint/strict-boolean-expressions': 'off',
+  'tsdoc/syntax': 'warn'
+}
