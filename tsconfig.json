@@ -1,0 +1,11 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "strict": false,
+    "types": ["node"],
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "outDir": "out",
+    "esModuleInterop": true
+  }
+}
