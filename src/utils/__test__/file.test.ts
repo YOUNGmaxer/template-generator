@@ -1,9 +1,9 @@
 import { describe, it } from '@jest/globals'
-import { copyDir } from '../file'
+import { copyDirOrFile } from '../file'
 
 describe('file', () => {
-  it('copyDir', () => {
-    copyDir(
+  it('copyDirOrFile', () => {
+    copyDirOrFile(
       '/Users/azeryang/Mine/Projects/template-generator/template/base',
       '/Users/azeryang/Mine/Projects/template-generator/out/template/base'
     )
