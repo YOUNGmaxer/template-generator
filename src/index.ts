@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import './utils/env'
 import prompts from 'prompts'
 import { generateTemplate, TemplatePart } from './generator'
 

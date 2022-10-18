@@ -1,13 +1,14 @@
 {
-  "name": "@azer/create",
+  "name": "@azeryang/create",
   "version": "0.0.1",
   "description": "minimalist template generator",
   "bin": {
-    "@azer/create": "./bin/index.js"
+    "@azeryang/create": "./bin/index.js"
   },
   "scripts": {
-    "dev": "ts-node ./src/index.ts",
-    "lint": "eslint src/**/*"
+    "dev": "cross-env NODE_ENV=development ts-node ./src/index.ts",
+    "lint": "eslint src/**/*",
+    "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=./bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "@types/prompts": "^2.4.1",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "cross-env": "^7.0.3",
     "esbuild": "^0.15.10",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^23.0.0",

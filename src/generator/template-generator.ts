@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import { TemplatePart } from './type'
 import { BeforeFileCopied, copyDirOrFile } from '../utils/file'
 
-const templateRootPath = path.resolve(__dirname, '../../template')
+const templateRootPath = path.resolve(__dirname, globalThis.__DEV__ ? '../../template' : '../template')
 
 function buildSourcePath(part: TemplatePart): string {
   return path.resolve(templateRootPath, part)
