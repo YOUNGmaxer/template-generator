@@ -16,10 +16,7 @@ async function init(): Promise<void> {
   ])
 
   const { projectName } = response
-
   generateTemplate(TemplatePart.Base, projectName)
-
-  console.log(response)
 }
 
 init().catch(e => {

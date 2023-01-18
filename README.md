@@ -4,5 +4,6 @@
 
 ## TODO
 
+- 支持 eslint
 - 使用 esbuild 构建产物
 - 支持一个基础 node 模板

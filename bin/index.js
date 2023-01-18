@@ -17,6 +17,10 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
@@ -28,6 +32,7 @@ var require_kleur = __commonJS({
     var { FORCE_COLOR, NODE_DISABLE_COLORS, TERM } = process.env;
     var $ = {
       enabled: !NODE_DISABLE_COLORS && TERM !== "dumb" && FORCE_COLOR !== "0",
+      // modifiers
       reset: init2(0, 0),
       bold: init2(1, 22),
       dim: init2(2, 22),
@@ -36,6 +41,7 @@ var require_kleur = __commonJS({
       inverse: init2(7, 27),
       hidden: init2(8, 28),
       strikethrough: init2(9, 29),
+      // colors
       black: init2(30, 39),
       red: init2(31, 39),
       green: init2(32, 39),
@@ -46,6 +52,7 @@ var require_kleur = __commonJS({
       white: init2(37, 39),
       gray: init2(90, 39),
       grey: init2(90, 39),
+      // background colors
       bgBlack: init2(40, 49),
       bgRed: init2(41, 49),
       bgGreen: init2(42, 49),
@@ -1372,13 +1379,21 @@ var require_date = __commonJS({
         token
       }) => token.replace(/\\(.)/g, "$1"),
       2: (opts) => new Day(opts),
+      // Day // TODO
       3: (opts) => new Month(opts),
+      // Month
       4: (opts) => new Year(opts),
+      // Year
       5: (opts) => new Meridiem(opts),
+      // AM/PM // TODO (special)
       6: (opts) => new Hours(opts),
+      // Hours
       7: (opts) => new Minutes(opts),
+      // Minutes
       8: (opts) => new Seconds(opts),
+      // Seconds
       9: (opts) => new Milliseconds(opts)
+      // Fractional seconds
     };
     var dfltLocales = {
       months: "January,February,March,April,May,June,July,August,September,October,November,December".split(","),
@@ -1944,6 +1959,7 @@ Instructions:
         }
         return prefix + title + color.gray(desc || "");
       }
+      // shared with autocompleteMultiselect
       paginateOptions(options) {
         if (options.length === 0) {
           return color.red("No matches for this query.");
@@ -1962,6 +1978,7 @@ Instructions:
         }
         return "\n" + styledOptions.join("\n");
       }
+      // shared with autocomleteMultiselect
       renderOptions(options) {
         if (!this.done) {
           return this.paginateOptions(options);
@@ -3838,13 +3855,21 @@ var require_date2 = __commonJS({
     var regexGroups = {
       1: ({ token }) => token.replace(/\\(.)/g, "$1"),
       2: (opts) => new Day(opts),
+      // Day // TODO
       3: (opts) => new Month(opts),
+      // Month
       4: (opts) => new Year(opts),
+      // Year
       5: (opts) => new Meridiem(opts),
+      // AM/PM // TODO (special)
       6: (opts) => new Hours(opts),
+      // Hours
       7: (opts) => new Minutes(opts),
+      // Minutes
       8: (opts) => new Seconds(opts),
+      // Seconds
       9: (opts) => new Milliseconds(opts)
+      // Fractional seconds
     };
     var dfltLocales = {
       months: "January,February,March,April,May,June,July,August,September,October,November,December".split(","),
@@ -4358,6 +4383,7 @@ Instructions:
         }
         return prefix + title + color.gray(desc || "");
       }
+      // shared with autocompleteMultiselect
       paginateOptions(options) {
         if (options.length === 0) {
           return color.red("No matches for this query.");
@@ -4376,6 +4402,7 @@ Instructions:
         }
         return "\n" + styledOptions.join("\n");
       }
+      // shared with autocomleteMultiselect
       renderOptions(options) {
         if (!this.done) {
           return this.paginateOptions(options);
@@ -5122,7 +5149,6 @@ async function init() {
   ]);
   const { projectName } = response;
   generateTemplate("base" /* Base */, projectName);
-  console.log(response);
 }
 init().catch((e) => {
   console.error(e);

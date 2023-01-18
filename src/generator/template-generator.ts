@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { TemplatePart } from './type'
-import { BeforeFileCopied, copyDirOrFile } from '../utils/file'
+import { BeforeFileCopied, copyDirOrFile } from '@/utils/file'
 
 const templateRootPath = path.resolve(__dirname, globalThis.__DEV__ ? '../../template' : '../template')
 
@@ -30,5 +30,8 @@ const beforeFileCopied: BeforeFileCopied = (filename, src, dest) => {
 export function generateTemplate(part: TemplatePart, dest: string): void {
   const src = buildSourcePath(part)
 
+  // 将模板拷贝到目标目录
   copyDirOrFile(src, dest, { beforeFileCopied })
+
+  // TODO 加工处理
 }
