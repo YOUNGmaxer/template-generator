@@ -34,4 +34,6 @@ export function generateTemplate(part: TemplatePart, dest: string): void {
   copyDirOrFile(src, dest, { beforeFileCopied })
 
   // TODO 加工处理
+
+  // TODO 插件增强
 }

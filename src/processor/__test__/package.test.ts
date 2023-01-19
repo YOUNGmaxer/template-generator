@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { describe, expect, it } from '@jest/globals'
-import { PackageProcessor, PackageKey } from '@/processor/package'
+import { PackageProcessor, PackageKey, PackageObject } from '@/processor/package'
 
 const packagePath = path.resolve(__dirname, 'package.json')
 
@@ -11,6 +11,14 @@ describe('PackageProcessor', () => {
     it('should set name', () => {
       packageProcessor.set(PackageKey.name, 'test-name')
       expect(packageProcessor.get(PackageKey.name)).toBe('test-name')
+    })
+  })
+
+  describe('dep method', () => {
+    const packageProcessor = new PackageProcessor(packagePath)
+    it('should add dep', () => {
+      packageProcessor.addDep('eslint', '^8.32.0')
+      expect(packageProcessor.get<PackageObject>(PackageKey.dependencies).eslint).toBe('^8.32.0')
     })
   })
 
